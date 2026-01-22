@@ -32,7 +32,17 @@ test("given an array with no duplicates, it returns a new array with the same va
   expect(output).toEqual([1, 2, 3]);
   expect(output).not.toBe(input);
 });
+test("given an array with duplicate strings, it removes duplicates", () => {
+  expect(dedupe(["a", "a", "b"])).toEqual(["a", "b"]);
+});
+test("given an array with duplicate numbers, it removes duplicates", () => {
+  expect(dedupe([1, 1, 2, 2, 3])).toEqual([1, 2, 3]);
+});
 
 // Given an array with strings or numbers
 // When passed to the dedupe function
 // Then it should remove the duplicate values, preserving the first occurence of each element
+
+test("it preserves the first occurrence of each element", () => {
+  expect(dedupe([5, 1, 1, 2, 3, 2, 5, 8])).toEqual([5, 1, 2, 3, 8]);
+});
