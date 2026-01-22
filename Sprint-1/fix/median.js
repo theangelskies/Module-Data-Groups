@@ -9,19 +9,27 @@ function calculateMedian(list) {
   if (!Array.isArray(list)) {
     return null;
   }
-}
-const numbers = list.filter(
-  (item) => typeof item === "number" && !Number.isNaN(item)
-);
-if (numbers.length === 0) {
-  return null;
-}
-const sortedNumbers = [...numbers].sort((a, b) => a - b);
-const middleIndex = Math.floor(sortedNumbers.length / 2);
 
-if (sortedNumbers.length % 2 === 0) {
-  return (sortedNumbers[middleIndex - 1] + sortedNumbers[middleIndex]) / 2;
-}
+  const numbers = list.filter(
+    item => typeof item === "number" && !Number.isNaN(item)
+  );
+
+  if (numbers.length === 0) {
+    return null;
+  }
+
+  const sortedNumbers = [...numbers].sort((a, b) => a - b);
+
+  const middleIndex = Math.floor(sortedNumbers.length / 2);
+
+  if (sortedNumbers.length % 2 === 0) {
+    return (
+      sortedNumbers[middleIndex - 1] +
+      sortedNumbers[middleIndex]
+    ) / 2;
+  }
+
   return sortedNumbers[middleIndex];
+}
 
 module.exports = calculateMedian;
