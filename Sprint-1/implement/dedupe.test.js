@@ -25,6 +25,13 @@ test.todo("given an empty array, it returns an empty array");
 // Given an array with no duplicates
 // When passed to the dedupe function
 // Then it should return a copy of the original array
+test("given an array with no duplicates, it returns a new array with the same values", () => {
+  const input = [1, 2, 3];
+  const output = dedupe(input);
+
+  expect(output).toEqual([1, 2, 3]);
+  expect(output).not.toBe(input);
+});
 
 // Given an array with strings or numbers
 // When passed to the dedupe function
