@@ -5,15 +5,16 @@
 // Hint: Please consider scenarios when 'list' doesn't have numbers (the function is expected to return null)
 // or 'list' has mixed values (the function is expected to sort only numbers).
 
-
 function calculateMedian(list) {
   if (!Array.isArray(list)) {
     return null;
-  }}
-  const numbers = list.filter(
-    (item) => typeof item === "number" && !Number.isNaN(item)
-  );
-  
+  }
+}
+const numbers = list.filter(
+  (item) => typeof item === "number" && !Number.isNaN(item)
+);
+if (numbers.length === 0) {
+  return null;
+}
 
-  
 module.exports = calculateMedian;
