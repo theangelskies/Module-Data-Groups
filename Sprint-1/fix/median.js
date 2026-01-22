@@ -16,5 +16,6 @@ const numbers = list.filter(
 if (numbers.length === 0) {
   return null;
 }
+const sortedNumbers = [...numbers].sort((a, b) => a - b);
 
 module.exports = calculateMedian;
