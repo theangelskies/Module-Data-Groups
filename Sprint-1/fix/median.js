@@ -10,6 +10,10 @@ function calculateMedian(list) {
   if (!Array.isArray(list)) {
     return null;
   }}
+  const numbers = list.filter(
+    (item) => typeof item === "number" && !Number.isNaN(item)
+  );
+  
 
   
 module.exports = calculateMedian;
