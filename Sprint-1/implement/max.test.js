@@ -58,3 +58,6 @@ test("given an array with non-number values, ignores them and returns the max nu
 // Given an array with only non-number values
 // When passed to the max function
 // Then it should return the least surprising value given how it behaves for all other inputs
+test("given an array with only non-number values, returns -Infinity", () => {
+  expect(findMax(["a", "b", null, undefined])).toBe(-Infinity);
+});
