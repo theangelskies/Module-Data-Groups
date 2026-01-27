@@ -1,4 +1,5 @@
 // Predict and explain first...
+//  TypeError: author is not iterable, for...of loop only works with iterables.
 
 // This program attempts to log out all the property values in the object.
 // But it isn't working. Explain why first and then fix the problem
