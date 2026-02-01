@@ -35,7 +35,18 @@ test("tally counts a single item", () => {
     a: 1,
   });
 });
-
+test("tally counts duplicate items", () => {
+  expect(tally(["a", "a", "a"])).toEqual({
+    a: 3,
+  });
+});
+test("tally counts multiple unique items", () => {
+  expect(tally(["a", "a", "b", "c"])).toEqual({
+    a: 2,
+    b: 1,
+    c: 1,
+  });
+});
 // Given an invalid input like a string
 // When passed to tally
 // Then it should throw an error
