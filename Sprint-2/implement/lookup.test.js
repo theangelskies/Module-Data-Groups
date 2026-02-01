@@ -7,6 +7,14 @@ describe("createLookup", () => {
       ["CA", "CAD"]
     ];
 
+    const result = createLookup(input);
+
+    expect(result).toEqual({
+      US: "USD",
+      CA: "CAD"
+    });
+  });
+
 /*
 
 Create a lookup object of key value pairs from an array of code pairs
