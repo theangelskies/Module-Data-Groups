@@ -50,3 +50,6 @@ test("tally counts multiple unique items", () => {
 // Given an invalid input like a string
 // When passed to tally
 // Then it should throw an error
+test("throws an error when input is not an array", () => {
+  expect(() => tally("abc")).toThrow("Input must be an array");
+});
