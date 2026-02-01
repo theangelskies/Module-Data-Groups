@@ -4,16 +4,25 @@ describe("createLookup", () => {
   test("creates a country currency code lookup for multiple codes", () => {
     const input = [
       ["US", "USD"],
-      ["CA", "CAD"]
+      ["CA", "CAD"],
     ];
 
     const result = createLookup(input);
 
     expect(result).toEqual({
       US: "USD",
-      CA: "CAD"
+      CA: "CAD",
     });
   });
+  test("returns an empty object when given an empty array", () => {
+    expect(createLookup([])).toEqual({});
+  });
+
+  test("returns an empty object for invalid input", () => {
+    expect(createLookup(null)).toEqual({});
+    expect(createLookup("not an array")).toEqual({});
+  });
+});
 
 /*
 
