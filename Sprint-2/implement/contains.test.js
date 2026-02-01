@@ -43,3 +43,6 @@ test("returns false when object does not contain the property", () => {
 // Given invalid parameters like an array
 // When passed to contains
 // Then it should return false or throw an error
+test("returns false when passed an array", () => {
+  expect(contains(["a", "b"], "a")).toBe(false);
+});
