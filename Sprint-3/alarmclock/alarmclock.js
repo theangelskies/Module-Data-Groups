@@ -1,14 +1,35 @@
-let timeRemaining = 0;
-let timerInterval = null;
+let remainingTime = 0;
+let intervalId = null;
 
 function setAlarm() {
-  // Clear any existing timer
-  if (timerInterval) {
-    clearInterval(timerInterval);
+  const input = document.getElementById("alarmSet");
+  remainingTime = parseInt(input.value, 10);
+
+  if (isNaN(remainingTime)) return;
+
+  // Update heading immediately
+  updateHeading(remainingTime);
+
+  // Clear existing interval if any
+  if (intervalId !== null) {
+    clearInterval(intervalId);
   }
-  // Get value from input (seconds)
-  const input = document.getElementById("alarmSet").value;
-  timeRemaining = parseInt(input, 10);
+
+  // Start countdown
+  intervalId = setInterval(() => {
+    remainingTime--;
+
+    if (remainingTime <= 0) {
+      clearInterval(intervalId);
+      updateHeading(0);
+      playAlarm();
+    } else {
+      updateHeading(remainingTime);
+    }
+  }, 1000);
+}
+
+
 
 // DO NOT EDIT BELOW HERE
 
