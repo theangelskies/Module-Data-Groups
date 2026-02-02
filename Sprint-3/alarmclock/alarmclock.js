@@ -6,6 +6,9 @@ function setAlarm() {
   if (timerInterval) {
     clearInterval(timerInterval);
   }
+  // Get value from input (seconds)
+  const input = document.getElementById("alarmSet").value;
+  timeRemaining = parseInt(input, 10);
 
 // DO NOT EDIT BELOW HERE
 
