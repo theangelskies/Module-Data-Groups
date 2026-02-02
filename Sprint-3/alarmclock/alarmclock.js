@@ -2,26 +2,10 @@ let timeRemaining = 0;
 let timerInterval = null;
 
 function setAlarm() {
-  const hours = parseInt(document.getElementById("hours").value) || 0;
-  const minutes = parseInt(document.getElementById("minutes").value) || 0;
-  const seconds = parseInt(document.getElementById("seconds").value) || 0;
-
-  timeRemaining = hours * 3600 + minutes * 60 + seconds;
-
-  if (timeRemaining <= 0) {
-    alert("Please set a valid time.");
-    return;
+  // Clear any existing timer
+  if (timerInterval) {
+    clearInterval(timerInterval);
   }
-
-  clearInterval(timerInterval);
-  timerInterval = setInterval(() => {
-    timeRemaining--;
-    if (timeRemaining <= 0) {
-      clearInterval(timerInterval);
-      playAlarm();
-    }
-  }, 1000);
-}
 
 // DO NOT EDIT BELOW HERE
 
