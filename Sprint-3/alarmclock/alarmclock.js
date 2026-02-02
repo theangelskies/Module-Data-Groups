@@ -29,7 +29,15 @@ function setAlarm() {
   }, 1000);
 }
 
+function updateHeading(seconds) {
+  const mins = Math.floor(seconds / 60)
+    .toString()
+    .padStart(2, "0");
+  const secs = (seconds % 60).toString().padStart(2, "0");
 
+  document.getElementById("timeRemaining").innerText =
+    `Time Remaining: ${mins}:${secs}`;
+}
 
 // DO NOT EDIT BELOW HERE
 
