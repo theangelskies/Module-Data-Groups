@@ -1,15 +1,91 @@
+/* Page reset */
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #e1eaf3, #dfe6e6de);
+  color: #f9fafb;
+}
+
+/* Centered container */
 .centre {
   position: fixed;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-}
 
-#alarmSet {
-  margin: 20px;
-}
-
-h1 {
+  background: #1e293b;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  width: 320px;
   text-align: center;
+}
+
+/* Heading */
+h1 {
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* Label */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* Input */
+#alarmSet {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+/* Set Alarm */
+#set {
+  background: #22c55e;
+  color: #052e16;
+}
+
+#set:hover {
+  background: #16a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(34, 197, 94, 0.35);
+}
+
+/* Stop Alarm */
+#stop {
+  background: #ef4444;
+  color: #450a0a;
+}
+
+#stop:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(239, 68, 68, 0.35);
 }
