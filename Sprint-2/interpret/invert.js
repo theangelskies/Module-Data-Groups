@@ -36,7 +36,11 @@ console.log(invert({ a: 1, b: 2 }));
 // }
 
 // c) What does Object.entries return? Why is it needed in this program?
+// Object.entries returns an array of a given object's own enumerable string-keyed property [key, value] pairs.
+// It is needed in this program to iterate over the key-value pairs of the object to swap them.
 
 // d) Explain why the current return value is different from the target output
+// The current implementation assigns the key as a literal string "key" instead of using the actual key value from Object.entries.
 
 // e) Fix the implementation of invert (and write tests to prove it's fixed!)
+
