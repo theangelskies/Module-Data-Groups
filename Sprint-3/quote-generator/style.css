@@ -13,3 +13,38 @@ body {
   align-items: center;
   font-family: Georgia, "Times New Roman", serif;
 }
+
+.quote-card {
+  background: white;
+  width: 80%;
+  max-width: 900px;
+  padding: 60px 70px 100px;
+  position: relative;
+}
+
+/* Quote text */
+#quote {
+  color: #f59e0b;
+  font-size: 32px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  position: relative;
+  padding-left: 50px;
+}
+
+/* Large opening quote */
+#quote::before {
+  content: "“";
+  position: absolute;
+  left: 0;
+  top: -20px;
+  font-size: 90px;
+  color: #f59e0b;
+}
+
+/* Author */
+#author {
+  color: #f59e0b;
+  font-size: 22px;
+  text-align: right;
+}
