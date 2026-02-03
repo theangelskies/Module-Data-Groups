@@ -23,6 +23,19 @@ const books = [
 
 function readingList(books) {
   const list = document.getElementById("reading-list");
+    books.forEach((book) => {
+    const li = document.createElement("li");
+
+    // Set background color
+    li.style.backgroundColor = book.alreadyRead ? "green" : "red";
+    li.style.padding = "10px";
+    li.style.marginBottom = "10px";
+    li.style.listStyle = "none";
+    li.style.display = "flex";
+    li.style.alignItems = "center";
+    li.style.gap = "10px";
+
+  });
 }
 
 // Call the function
