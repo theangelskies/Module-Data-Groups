@@ -55,3 +55,15 @@ document.getElementById("auto-forward-btn").addEventListener("click", () => {
     updateImage();
   }, 5000);
 });
+// Auto backward
+document.getElementById("auto-backward-btn").addEventListener("click", () => {
+  clearInterval(slideshowInterval);
+
+  slideshowInterval = setInterval(() => {
+    currentIndex--;
+    if (currentIndex < 0) {
+      currentIndex = images.length - 1;
+    }
+    updateImage();
+  }, 5000);
+});
