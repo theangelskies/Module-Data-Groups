@@ -16,3 +16,14 @@ const backwardBtn = document.getElementById("backward-btn");
 function updateImage() {
   img.src = images[currentIndex];
 }
+// Forward button
+forwardBtn.addEventListener("click", () => {
+  currentIndex++;
+
+  if (currentIndex >= images.length) {
+    currentIndex = 0; // loop back to start
+  }
+
+  updateImage();
+});
+
