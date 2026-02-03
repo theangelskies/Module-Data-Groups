@@ -49,3 +49,19 @@ body {
   text-align: right;
 }
 
+/* Button */
+#new-quote {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  background-color: #f59e0b;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+#new-quote:hover {
+  opacity: 0.9;
+}
