@@ -4,7 +4,14 @@ const authorEl = document.getElementById("author");
 const newQuoteBtn = document.getElementById("new-quote");
 const autoToggle = document.getElementById("auto-play-toggle");
 const autoStatus = document.getElementById("auto-status");
+
 let autoInterval = null;
+
+// Function to pick a random item from an array
+function pickFromArray(choices) {
+  return choices[Math.floor(Math.random() * choices.length)];
+}
+
 // Function to show a random quote
 function showRandomQuote() {
   const randomQuote = pickFromArray(quotes);
@@ -12,8 +19,20 @@ function showRandomQuote() {
   authorEl.innerText = randomQuote.author;
   console.log("Random quote picked:", randomQuote); // <-- Check output in console
 }
+
 // Event listener for "New Quote" button
 newQuoteBtn.addEventListener("click", showRandomQuote);
+
+// Auto-play toggle
+autoToggle.addEventListener("change", () => {
+  if (autoToggle.checked) {
+    autoStatus.innerText = "auto-play: ON";
+    autoInterval = setInterval(showRandomQuote, 5000); // every 5 seconds
+  } else {
+    autoStatus.innerText = "auto-play: OFF";
+    clearInterval(autoInterval);
+  }
+});
 
 // Show initial quote after DOM load
 window.addEventListener("load", showRandomQuote);
