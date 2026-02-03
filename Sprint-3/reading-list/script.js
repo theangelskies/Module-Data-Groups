@@ -26,30 +26,27 @@ function readingList(books) {
   books.forEach((book) => {
     const li = document.createElement("li");
 
-    // Set background color
+    // Background color
     li.style.backgroundColor = book.alreadyRead ? "green" : "red";
-    li.style.padding = "10px";
-    li.style.marginBottom = "10px";
-    li.style.listStyle = "none";
-    li.style.display = "flex";
-    li.style.alignItems = "center";
-    li.style.gap = "10px";
 
-    // Add book cover
+    // Image (NO extra attributes!)
     const img = document.createElement("img");
     img.src = book.bookCoverImage;
-    img.style.height = "100px";
 
-    // Add title and author
-    const info = document.createElement("div");
-    info.innerHTML = `<p>${book.title}</p><p>${book.author}</p>`;
+    // Title
+    const title = document.createElement("p");
+    title.innerText = book.title;
+
+    // Author
+    const author = document.createElement("p");
+    author.innerText = book.author;
 
     li.appendChild(img);
-    li.appendChild(info);
+    li.appendChild(title);
+    li.appendChild(author);
 
     list.appendChild(li);
   });
 }
 
-// Call the function
 readingList(books);
