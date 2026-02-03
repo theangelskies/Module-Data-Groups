@@ -67,3 +67,8 @@ document.getElementById("auto-backward-btn").addEventListener("click", () => {
     updateImage();
   }, 5000);
 });
+
+// Stop slideshow
+document.getElementById("stop-btn").addEventListener("click", () => {
+  clearInterval(slideshowInterval);
+});
