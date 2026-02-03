@@ -2,7 +2,8 @@
 const quoteEl = document.getElementById("quote");
 const authorEl = document.getElementById("author");
 const newQuoteBtn = document.getElementById("new-quote");
-
+const autoToggle = document.getElementById("auto-play-toggle");
+const autoStatus = document.getElementById("auto-status");
 let autoInterval = null;
 // Function to show a random quote
 function showRandomQuote() {

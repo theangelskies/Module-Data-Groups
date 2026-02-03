@@ -65,3 +65,13 @@ body {
 #new-quote:hover {
   opacity: 0.9;
 }
+#auto-play {
+  position: absolute;
+  left: 40px;
+  bottom: 40px;
+  background-color: #f59e0b;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 20px;
+}
