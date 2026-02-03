@@ -1,3 +1,8 @@
+// DOM elements
+const quoteEl = document.getElementById("quote");
+const authorEl = document.getElementById("author");
+const newQuoteBtn = document.getElementById("new-quote");
+
 // DO NOT EDIT BELOW HERE
 
 // pickFromArray is a function which will return one item, at
