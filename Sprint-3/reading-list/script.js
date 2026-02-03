@@ -20,10 +20,10 @@ const books = [
     bookCoverImage: "https://blackwells.co.uk/jacket/l/9780135957059.jpg",
   },
 ];
-
 function readingList(books) {
   const list = document.getElementById("reading-list");
-    books.forEach((book) => {
+
+  books.forEach((book) => {
     const li = document.createElement("li");
 
     // Set background color
@@ -35,7 +35,12 @@ function readingList(books) {
     li.style.alignItems = "center";
     li.style.gap = "10px";
 
-  });
+    // Add book cover
+    const img = document.createElement("img");
+    img.src = book.bookCoverImage;
+    img.style.height = "100px";
+
+ 
 }
 
 // Call the function
