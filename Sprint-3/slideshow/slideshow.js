@@ -12,3 +12,7 @@ let currentIndex = 0;
 const img = document.getElementById("carousel-img");
 const forwardBtn = document.getElementById("forward-btn");
 const backwardBtn = document.getElementById("backward-btn");
+// Show image based on index
+function updateImage() {
+  img.src = images[currentIndex];
+}
