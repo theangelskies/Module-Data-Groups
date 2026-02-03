@@ -3,6 +3,16 @@ const quoteEl = document.getElementById("quote");
 const authorEl = document.getElementById("author");
 const newQuoteBtn = document.getElementById("new-quote");
 
+let autoInterval = null;
+// Function to show a random quote
+function showRandomQuote() {
+  const randomQuote = pickFromArray(quotes);
+  quoteEl.innerText = randomQuote.quote;
+  authorEl.innerText = randomQuote.author;
+  console.log("Random quote picked:", randomQuote); // <-- Check output in console
+}
+
+
 // DO NOT EDIT BELOW HERE
 
 // pickFromArray is a function which will return one item, at
