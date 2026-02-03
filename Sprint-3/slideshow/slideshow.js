@@ -2,6 +2,8 @@ const images = [
   "./assets/cute-cat-a.png",
   "./assets/cute-cat-b.jpg",
   "./assets/cute-cat-c.jpg",
+  "./assets/cat4.jpg",
+  "./assets/cat5.jpg",
 ];
 
 // Write your code here
