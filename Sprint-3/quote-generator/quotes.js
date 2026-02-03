@@ -14,6 +14,9 @@ function showRandomQuote() {
 // Event listener for "New Quote" button
 newQuoteBtn.addEventListener("click", showRandomQuote);
 
+// Show initial quote after DOM load
+window.addEventListener("load", showRandomQuote);
+
 // DO NOT EDIT BELOW HERE
 
 // pickFromArray is a function which will return one item, at
