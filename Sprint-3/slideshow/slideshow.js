@@ -12,10 +12,12 @@ let currentIndex = 0;
 const img = document.getElementById("carousel-img");
 const forwardBtn = document.getElementById("forward-btn");
 const backwardBtn = document.getElementById("backward-btn");
+
 // Show image based on index
 function updateImage() {
   img.src = images[currentIndex];
 }
+
 // Forward button
 forwardBtn.addEventListener("click", () => {
   currentIndex++;
@@ -27,3 +29,13 @@ forwardBtn.addEventListener("click", () => {
   updateImage();
 });
 
+// Backward button
+backwardBtn.addEventListener("click", () => {
+  currentIndex--;
+
+  if (currentIndex < 0) {
+    currentIndex = images.length - 1; // go to last image
+  }
+
+  updateImage();
+});
