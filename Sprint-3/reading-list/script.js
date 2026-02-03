@@ -21,3 +21,9 @@ const books = [
   },
 ];
 
+function readingList(books) {
+  const list = document.getElementById("reading-list");
+}
+
+// Call the function
+readingList(books);
