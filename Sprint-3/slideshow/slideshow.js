@@ -41,3 +41,17 @@ backwardBtn.addEventListener("click", () => {
 
   updateImage();
 });
+let slideshowInterval = null;
+
+// Auto forward
+document.getElementById("auto-forward-btn").addEventListener("click", () => {
+  clearInterval(slideshowInterval);
+
+  slideshowInterval = setInterval(() => {
+    currentIndex++;
+    if (currentIndex >= images.length) {
+      currentIndex = 0;
+    }
+    updateImage();
+  }, 5000);
+});
