@@ -40,7 +40,15 @@ function readingList(books) {
     img.src = book.bookCoverImage;
     img.style.height = "100px";
 
- 
+    // Add title and author
+    const info = document.createElement("div");
+    info.innerHTML = `<p>${book.title}</p><p>${book.author}</p>`;
+
+    li.appendChild(img);
+    li.appendChild(info);
+
+    list.appendChild(li);
+  });
 }
 
 // Call the function
