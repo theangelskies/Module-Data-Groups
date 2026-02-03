@@ -11,7 +11,8 @@ function showRandomQuote() {
   authorEl.innerText = randomQuote.author;
   console.log("Random quote picked:", randomQuote); // <-- Check output in console
 }
-
+// Event listener for "New Quote" button
+newQuoteBtn.addEventListener("click", showRandomQuote);
 
 // DO NOT EDIT BELOW HERE
 
