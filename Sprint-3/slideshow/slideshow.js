@@ -2,73 +2,75 @@ const images = [
   "./assets/cute-cat-a.png",
   "./assets/cute-cat-b.jpg",
   "./assets/cute-cat-c.jpg",
-  "./assets/cat4.jpg",
-  "./assets/cat5.jpg",
 ];
 
 // Write your code here
 
 let currentIndex = 0;
+let slideshowInterval = null;
 
 // Grab elements
 const img = document.getElementById("carousel-img");
 const forwardBtn = document.getElementById("forward-btn");
 const backwardBtn = document.getElementById("backward-btn");
+const autoForwardBtn = document.getElementById("auto-forward-btn");
+const autoBackwardBtn = document.getElementById("auto-backward-btn");
+const stopBtn = document.getElementById("stop-btn");
 
-// Show image based on index
+// Initial image
+img.src = images[currentIndex];
+
+// Helper functions
 function updateImage() {
   img.src = images[currentIndex];
 }
 
-// Forward button
+function disableAutoButtons() {
+  autoForwardBtn.disabled = true;
+  autoBackwardBtn.disabled = true;
+}
+
+function enableAutoButtons() {
+  autoForwardBtn.disabled = false;
+  autoBackwardBtn.disabled = false;
+}
+
+// Manual forward
 forwardBtn.addEventListener("click", () => {
-  currentIndex++;
-
-  if (currentIndex >= images.length) {
-    currentIndex = 0; // loop back to start
-  }
-
+  currentIndex = (currentIndex + 1) % images.length;
   updateImage();
 });
 
-// Backward button
+// Manual backward
 backwardBtn.addEventListener("click", () => {
-  currentIndex--;
-
-  if (currentIndex < 0) {
-    currentIndex = images.length - 1; // go to last image
-  }
-
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
   updateImage();
 });
-let slideshowInterval = null;
 
 // Auto forward
-document.getElementById("auto-forward-btn").addEventListener("click", () => {
+autoForwardBtn.addEventListener("click", () => {
   clearInterval(slideshowInterval);
+  disableAutoButtons();
 
   slideshowInterval = setInterval(() => {
-    currentIndex++;
-    if (currentIndex >= images.length) {
-      currentIndex = 0;
-    }
+    currentIndex = (currentIndex + 1) % images.length;
     updateImage();
-  }, 5000);
+  }, 1000);
 });
+
 // Auto backward
-document.getElementById("auto-backward-btn").addEventListener("click", () => {
+autoBackwardBtn.addEventListener("click", () => {
   clearInterval(slideshowInterval);
+  disableAutoButtons();
 
   slideshowInterval = setInterval(() => {
-    currentIndex--;
-    if (currentIndex < 0) {
-      currentIndex = images.length - 1;
-    }
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
     updateImage();
-  }, 5000);
+  }, 1000);
 });
 
 // Stop slideshow
-document.getElementById("stop-btn").addEventListener("click", () => {
+stopBtn.addEventListener("click", () => {
   clearInterval(slideshowInterval);
+  enableAutoButtons();
 });
