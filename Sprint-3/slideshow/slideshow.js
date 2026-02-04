@@ -13,9 +13,9 @@ let slideshowInterval = null;
 const img = document.getElementById("carousel-img");
 const forwardBtn = document.getElementById("forward-btn");
 const backwardBtn = document.getElementById("backward-btn");
-const autoForwardBtn = document.getElementById("auto-forward-btn");
-const autoBackwardBtn = document.getElementById("auto-backward-btn");
-const stopBtn = document.getElementById("stop-btn");
+const autoForwardBtn = document.getElementById("auto-forward");
+const autoBackwardBtn = document.getElementById("auto-backward");
+const stopBtn = document.getElementById("stop");
 
 // Initial image
 img.src = images[currentIndex];
@@ -23,6 +23,8 @@ img.src = images[currentIndex];
 // Helper functions
 function updateImage() {
   img.src = images[currentIndex];
+  img.style.width = "400px";
+  img.style.height = "400px";
 }
 
 function disableAutoButtons() {
@@ -49,28 +51,28 @@ backwardBtn.addEventListener("click", () => {
 
 // Auto forward
 autoForwardBtn.addEventListener("click", () => {
-  clearInterval(slideshowInterval);
+  if (slideshowInterval !== null) clearInterval(slideshowInterval);
   disableAutoButtons();
 
   slideshowInterval = setInterval(() => {
     currentIndex = (currentIndex + 1) % images.length;
     updateImage();
-  }, 1000);
+  }, 2000);
 });
 
 // Auto backward
 autoBackwardBtn.addEventListener("click", () => {
-  clearInterval(slideshowInterval);
+  if (slideshowInterval !== null) clearInterval(slideshowInterval);
   disableAutoButtons();
 
   slideshowInterval = setInterval(() => {
     currentIndex = (currentIndex - 1 + images.length) % images.length;
     updateImage();
-  }, 1000);
+  }, 2000);
 });
 
 // Stop slideshow
 stopBtn.addEventListener("click", () => {
-  clearInterval(slideshowInterval);
+  if (slideshowInterval !== null) clearInterval(slideshowInterval);
   enableAutoButtons();
 });
