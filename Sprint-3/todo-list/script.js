@@ -39,6 +39,22 @@ function createTodo(text) {
 // These are the same todos that currently display in the HTML
 // You will want to remove the ones in the current HTML after you have created them using JavaScript
 
+// ---------- Initial todos ----------
+const defaultTodos = ["Wash the dishes", "Do the shopping"];
+
+defaultTodos.forEach((todo) => {
+  todoList.appendChild(createTodo(todo));
+});
+
+// ---------- Add new todo ----------
+addBtn.addEventListener("click", () => {
+  if (!input || input.value.trim() === "") return;
+
+  const li = createTodo(input.value.trim());
+  todoList.appendChild(li);
+
+  input.value = "";
+});
 
 // This function will take the value of the input field and add it as a new todo to the bottom of the todo list. These new todos will need the completed and delete buttons adding like normal.
 function addNewTodo(event) {
