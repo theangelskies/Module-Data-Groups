@@ -1,40 +1,43 @@
 // DOM elements
-const quoteEl = document.getElementById("quote");
-const authorEl = document.getElementById("author");
-const newQuoteBtn = document.getElementById("new-quote");
+const quoteElement = document.getElementById("quote");
+const authorElement = document.getElementById("author");
+const newQuoteButton = document.getElementById("new-quote");
 const autoToggle = document.getElementById("auto-play-toggle");
 const autoStatus = document.getElementById("auto-status");
 
 let autoInterval = null;
 
-// Function to pick a random item from an array
-function pickFromArray(choices) {
-  return choices[Math.floor(Math.random() * choices.length)];
-}
-
-// Function to show a random quote
+// Show a random quote
 function showRandomQuote() {
   const randomQuote = pickFromArray(quotes);
-  quoteEl.innerText = randomQuote.quote;
-  authorEl.innerText = randomQuote.author;
-  console.log("Random quote picked:", randomQuote); // <-- Check output in console
+  quoteElement.innerText = randomQuote.quote;
+  authorElement.innerText = randomQuote.author;
 }
 
-// Event listener for "New Quote" button
-newQuoteBtn.addEventListener("click", showRandomQuote);
+// Click "New Quote"
+newQuoteButton.addEventListener("click", () => {
+  showRandomQuote();
 
-// Auto-play toggle
+  // Reset autoplay timer if enabled
+  if (autoToggle.checked) {
+    clearInterval(autoInterval);
+    autoInterval = setInterval(showRandomQuote, 5000);
+  }
+});
+
+// Toggle autoplay
 autoToggle.addEventListener("change", () => {
   if (autoToggle.checked) {
     autoStatus.innerText = "auto-play: ON";
-    autoInterval = setInterval(showRandomQuote, 5000); // every 5 seconds
+
+    clearInterval(autoInterval);
+    autoInterval = setInterval(showRandomQuote, 5000);
   } else {
     autoStatus.innerText = "auto-play: OFF";
     clearInterval(autoInterval);
   }
 });
 
-// Show initial quote after DOM load
 window.addEventListener("load", showRandomQuote);
 
 // DO NOT EDIT BELOW HERE
@@ -55,6 +58,9 @@ window.addEventListener("load", showRandomQuote);
 // pickFromArray(['a','b','c','d'])     // maybe returns 'c'
 
 // You don't need to change this function
+function pickFromArray(choices) {
+  return choices[Math.floor(Math.random() * choices.length)];
+}
 
 // A list of quotes you can use in your app.
 // DO NOT modify this array, otherwise the tests may break!
