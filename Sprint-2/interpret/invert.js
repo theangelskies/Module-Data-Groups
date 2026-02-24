@@ -8,5 +8,4 @@ function invert(obj) {
   return invertedObj;
 }
 
-// test
-console.log(invert({ x: 10, y: 20 }));
+module.exports = invert;
