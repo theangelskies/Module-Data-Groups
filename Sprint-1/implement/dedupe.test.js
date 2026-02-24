@@ -11,35 +11,42 @@ E.g. dedupe([5, 1, 1, 2, 3, 2, 5, 8]) target output: [5, 1, 2, 3, 8]
 E.g. dedupe([1, 2, 1]) target output: [1, 2]
 */
 
-// Acceptance Criteria:
+const cases = [
+  { input: [], expected: [], description: "empty array" },
+  {
+    input: [1, 2, 3],
+    expected: [1, 2, 3],
+    description: "array with no duplicates",
+  },
+  {
+    input: ["a", "a", "b"],
+    expected: ["a", "b"],
+    description: "array with duplicate strings",
+  },
+  {
+    input: [1, 1, 2, 2, 3],
+    expected: [1, 2, 3],
+    description: "array with duplicate numbers",
+  },
+  {
+    input: [5, 1, 1, 2, 3, 2, 5, 8],
+    expected: [5, 1, 2, 3, 8],
+    description: "array with mixed duplicates preserving first occurrence",
+  },
+];
 
-// Given an empty array
-// When passed to the dedupe function
-// Then it should return an empty array
-test("given an empty array, it returns an empty array", () => {
-  expect(dedupe([])).toEqual([]);
-});
-// Given an array with no duplicates
-// When passed to the dedupe function
-// Then it should return a copy of the original array
-test("given an array with no duplicates, it returns a new array with the same values", () => {
-  const input = [1, 2, 3];
-  const output = dedupe(input);
+test.each(cases)(
+  "given $description, returns deduplicated array",
+  ({ input, expected }) => {
+    const output = dedupe(input);
+    expect(output).toEqual(expected);
 
-  expect(output).toEqual([1, 2, 3]);
-  expect(output).not.toBe(input);
-});
-test("given an array with duplicate strings, it removes duplicates", () => {
-  expect(dedupe(["a", "a", "b"])).toEqual(["a", "b"]);
-});
-test("given an array with duplicate numbers, it removes duplicates", () => {
-  expect(dedupe([1, 1, 2, 2, 3])).toEqual([1, 2, 3]);
-});
-
-// Given an array with strings or numbers
-// When passed to the dedupe function
-// Then it should remove the duplicate values, preserving the first occurence of each element
-
-test("it preserves the first occurrence of each element", () => {
-  expect(dedupe([5, 1, 1, 2, 3, 2, 5, 8])).toEqual([5, 1, 2, 3, 8]);
-});
+    // For the "no duplicates" case, check that a new array is returned
+    if (
+      input.length === expected.length &&
+      input.every((v, i) => v === expected[i])
+    ) {
+      expect(output).not.toBe(input);
+    }
+  }
+);
