@@ -1,13 +1,8 @@
 function sum(elements) {
-  let total = 0;
-
-  for (const element of elements) {
-    if (typeof element === "number") {
-      total += element;
-    }
-  }
-
-  return total;
+  return elements.reduce(
+    (total, element) => (typeof element === "number" ? total + element : total),
+    0
+  );
 }
 
 module.exports = sum;
