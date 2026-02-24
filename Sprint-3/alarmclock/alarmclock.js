@@ -3,18 +3,22 @@ let intervalId = null;
 
 function setAlarm() {
   const input = document.getElementById("alarmSet");
+  const setBtn = document.getElementById("set");
 
-  // If timer is not started yet, read input
   if (intervalId === null && remainingTime === 0) {
     remainingTime = parseInt(input.value, 10);
-    if (isNaN(remainingTime)) return;
+
+    if (isNaN(remainingTime) || remainingTime <= 0) {
+      alert("Please enter a positive number of seconds.");
+      remainingTime = 0;
+      return;
+    }
+
     updateHeading(remainingTime);
   }
 
-  // If already running, do nothing
   if (intervalId !== null) return;
 
-  // Start or continue countdown
   intervalId = setInterval(() => {
     remainingTime--;
 
@@ -24,16 +28,22 @@ function setAlarm() {
       remainingTime = 0;
       updateHeading(0);
       playAlarm();
+      setBtn.innerText = "Set Alarm";
     } else {
       updateHeading(remainingTime);
     }
   }, 1000);
+
+  setBtn.innerText = "Continue";
 }
 
 function pauseCountdown() {
+  const setBtn = document.getElementById("set");
+
   if (intervalId !== null) {
     clearInterval(intervalId);
-    intervalId = null; // allows resume
+    intervalId = null;
+    setBtn.innerText = "Continue";
   }
 }
 
@@ -53,11 +63,11 @@ var audio = new Audio("alarmsound.mp3");
 
 function setup() {
   document.getElementById("set").addEventListener("click", () => {
-    setAlarm(); // start OR continue
+    setAlarm();
   });
 
   document.getElementById("stop").addEventListener("click", () => {
-    pauseCountdown(); // pause only
+    pauseCountdown();
     pauseAlarm();
   });
 }
