@@ -1,16 +1,18 @@
 function createLookup(pairs) {
-  // Guard against invalid input
-  if (!Array.isArray(pairs)) {
+  if (!pairs || typeof pairs[Symbol.iterator] !== "function") {
     return {};
   }
 
-  return pairs.reduce((lookup, pair) => {
+  const lookup = {};
+
+  for (const pair of pairs) {
     if (Array.isArray(pair) && pair.length === 2) {
       const [countryCode, currencyCode] = pair;
       lookup[countryCode] = currencyCode;
     }
-    return lookup;
-  }, {});
+  }
+
+  return lookup;
 }
 
 module.exports = createLookup;
