@@ -1,7 +1,7 @@
 // DOM elements
-const quoteEl = document.getElementById("quote");
-const authorEl = document.getElementById("author");
-const newQuoteBtn = document.getElementById("new-quote");
+const quoteElement = document.getElementById("quote");
+const authorElement = document.getElementById("author");
+const newQuoteButton = document.getElementById("new-quote");
 const autoToggle = document.getElementById("auto-play-toggle");
 const autoStatus = document.getElementById("auto-status");
 
