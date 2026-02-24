@@ -28,12 +28,12 @@ newQuoteButton.addEventListener("click", () => {
 // Toggle autoplay
 autoToggle.addEventListener("change", () => {
   if (autoToggle.checked) {
-    autoStatus.innerText = "auto-play: ON";
+    autoStatus.innerText = "ON";
 
     clearInterval(autoInterval);
     autoInterval = setInterval(showRandomQuote, 5000);
   } else {
-    autoStatus.innerText = "auto-play: OFF";
+    autoStatus.innerText = "OFF";
     clearInterval(autoInterval);
   }
 });
