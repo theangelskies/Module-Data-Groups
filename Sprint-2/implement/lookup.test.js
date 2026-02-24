@@ -14,6 +14,7 @@ describe("createLookup", () => {
       CA: "CAD",
     });
   });
+
   test("returns an empty object when given an empty array", () => {
     expect(createLookup([])).toEqual({});
   });
@@ -22,36 +23,26 @@ describe("createLookup", () => {
     expect(createLookup(null)).toEqual({});
     expect(createLookup("not an array")).toEqual({});
   });
+
+  test("ignores entries that are not arrays", () => {
+    const input = [["US", "USD"], "invalid", ["CA", "CAD"], 123];
+
+    expect(createLookup(input)).toEqual({
+      US: "USD",
+      CA: "CAD",
+    });
+  });
+
+  test("handles duplicate country codes by keeping the last value", () => {
+    const input = [
+      ["US", "USD"],
+      ["CA", "CAD"],
+      ["US", "USDT"],
+    ];
+
+    expect(createLookup(input)).toEqual({
+      US: "USDT",
+      CA: "CAD",
+    });
+  });
 });
-
-/*
-
-Create a lookup object of key value pairs from an array of code pairs
-
-Acceptance Criteria:
-
-Given
- - An array of arrays representing country code and currency code pairs
-   e.g. [['US', 'USD'], ['CA', 'CAD']]
-
-When
- - createLookup function is called with the country-currency array as an argument
-
-Then
- - It should return an object where:
- - The keys are the country codes
- - The values are the corresponding currency codes
-
-Example
-Given: [['US', 'USD'], ['CA', 'CAD']]
-
-When
-createLookup(countryCurrencyPairs) is called
-
-Then
-It should return:
- {
-   'US': 'USD',
-   'CA': 'CAD'
- }
-*/
