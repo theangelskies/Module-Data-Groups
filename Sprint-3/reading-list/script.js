@@ -24,7 +24,7 @@ function readingList(books) {
   const list = document.getElementById("reading-list");
 
   books.forEach((book) => {
-    const li = document.createElement("li");
+    const listItem = document.createElement("li");
 
     // Background color
     li.style.backgroundColor = book.alreadyRead ? "green" : "red";
