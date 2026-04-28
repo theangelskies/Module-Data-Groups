@@ -11,33 +11,39 @@ We have set things up already so that this file can see your function from the o
 */
 
 const findMax = require("./max.js");
+const cases = [
+  { input: [], expected: -Infinity, description: "empty array" },
+  { input: [42], expected: 42, description: "array with one number" },
+  {
+    input: [-10, 0, 5, 20, -30],
+    expected: 20,
+    description: "array with both positive and negative numbers",
+  },
+  {
+    input: [-100, -50, -3, -20],
+    expected: -3,
+    description: "array with only negative numbers",
+  },
+  {
+    input: [1.5, 2.75, 2.74],
+    expected: 2.75,
+    description: "array with decimal numbers",
+  },
+  {
+    input: ["hey", 10, "hi", 60, 10],
+    expected: 60,
+    description: "array with non-number values",
+  },
+  {
+    input: ["a", "b", null, undefined],
+    expected: -Infinity,
+    description: "array with only non-number values",
+  },
+];
 
-// Given an empty array
-// When passed to the max function
-// Then it should return -Infinity
-// Delete this test.todo and replace it with a test.
-test.todo("given an empty array, returns -Infinity");
-
-// Given an array with one number
-// When passed to the max function
-// Then it should return that number
-
-// Given an array with both positive and negative numbers
-// When passed to the max function
-// Then it should return the largest number overall
-
-// Given an array with just negative numbers
-// When passed to the max function
-// Then it should return the closest one to zero
-
-// Given an array with decimal numbers
-// When passed to the max function
-// Then it should return the largest decimal number
-
-// Given an array with non-number values
-// When passed to the max function
-// Then it should return the max and ignore non-numeric values
-
-// Given an array with only non-number values
-// When passed to the max function
-// Then it should return the least surprising value given how it behaves for all other inputs
+test.each(cases)(
+  "given $description, returns $expected",
+  ({ input, expected }) => {
+    expect(findMax(input)).toBe(expected);
+  }
+);

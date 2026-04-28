@@ -8,29 +8,35 @@ E.g. sum(['hey', 10, 'hi', 60, 10]), target output: 80 (ignore any non-numerical
 
 const sum = require("./sum.js");
 
-// Acceptance Criteria:
+// Parameterized test cases
+const cases = [
+  { input: [], expected: 0, description: "empty array" },
+  { input: [42], expected: 42, description: "array with one number" },
+  {
+    input: [10, -5, -3],
+    expected: 2,
+    description: "array with negative numbers",
+  },
+  {
+    input: [1.5, 2.25, 0.25],
+    expected: 4,
+    description: "array with decimal numbers",
+  },
+  {
+    input: ["hey", 10, "hi", 60, 10],
+    expected: 80,
+    description: "array with non-number values",
+  },
+  {
+    input: ["a", null, undefined, "b"],
+    expected: 0,
+    description: "array with only non-number values",
+  },
+];
 
-// Given an empty array
-// When passed to the sum function
-// Then it should return 0
-test.todo("given an empty array, returns 0")
-
-// Given an array with just one number
-// When passed to the sum function
-// Then it should return that number
-
-// Given an array containing negative numbers
-// When passed to the sum function
-// Then it should still return the correct total sum
-
-// Given an array with decimal/float numbers
-// When passed to the sum function
-// Then it should return the correct total sum
-
-// Given an array containing non-number values
-// When passed to the sum function
-// Then it should ignore the non-numerical values and return the sum of the numerical elements
-
-// Given an array with only non-number values
-// When passed to the sum function
-// Then it should return the least surprising value given how it behaves for all other inputs
+test.each(cases)(
+  "given $description, returns $expected",
+  ({ input, expected }) => {
+    expect(sum(input)).toBe(expected);
+  }
+);
