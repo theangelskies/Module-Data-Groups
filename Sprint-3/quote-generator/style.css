@@ -1,1 +1,77 @@
 /** Write your CSS in here **/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #f59e0b; /* orange */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.quote-card {
+  background: white;
+  width: 80%;
+  max-width: 900px;
+  padding: 60px 70px 100px;
+  position: relative;
+}
+
+/* Quote text */
+#quote {
+  color: #f59e0b;
+  font-size: 32px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  position: relative;
+  padding-left: 50px;
+}
+
+/* Large opening quote */
+#quote::before {
+  content: "“";
+  position: absolute;
+  left: 0;
+  top: -20px;
+  font-size: 90px;
+  color: #f59e0b;
+}
+
+/* Author */
+#author {
+  color: #f59e0b;
+  font-size: 22px;
+  text-align: right;
+}
+
+/* Button */
+#new-quote {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  background-color: #f59e0b;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+#new-quote:hover {
+  opacity: 0.9;
+}
+#auto-play {
+  position: absolute;
+  left: 40px;
+  bottom: 40px;
+  background-color: #f59e0b;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 20px;
+}
