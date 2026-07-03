@@ -20,4 +20,33 @@ const books = [
     bookCoverImage: "https://blackwells.co.uk/jacket/l/9780135957059.jpg",
   },
 ];
+function readingList(books) {
+  const list = document.getElementById("reading-list");
 
+  books.forEach((book) => {
+    const listItem = document.createElement("li");
+
+    // Background color
+    li.style.backgroundColor = book.alreadyRead ? "green" : "red";
+
+    // Image (NO extra attributes!)
+    const img = document.createElement("img");
+    img.src = book.bookCoverImage;
+
+    // Title
+    const title = document.createElement("p");
+    title.innerText = book.title;
+
+    // Author
+    const author = document.createElement("p");
+    author.innerText = book.author;
+
+    li.appendChild(img);
+    li.appendChild(title);
+    li.appendChild(author);
+
+    list.appendChild(li);
+  });
+}
+
+readingList(books);
