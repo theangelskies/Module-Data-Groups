@@ -1,12 +1,27 @@
 function parseQueryString(queryString) {
   const queryParams = {};
-  if (queryString.length === 0) {
+
+  if (!queryString) {
     return queryParams;
   }
+
   const keyValuePairs = queryString.split("&");
 
   for (const pair of keyValuePairs) {
-    const [key, value] = pair.split("=");
+    // Skip empty pairs (e.g. trailing &)
+    if (!pair) continue;
+
+    const equalsIndex = pair.indexOf("=");
+
+    // Handle keys without "=" (e.g. "?flag")
+    if (equalsIndex === -1) {
+      queryParams[pair] = "";
+      continue;
+    }
+
+    const key = pair.slice(0, equalsIndex);
+    const value = pair.slice(equalsIndex + 1);
+
     queryParams[key] = value;
   }
 
